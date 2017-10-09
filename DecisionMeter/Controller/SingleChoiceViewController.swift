@@ -32,14 +32,14 @@ class SingleChoiceViewController: QuestionViewController {
         let defaults = UserDefaults.standard
         
         self.questionLabel.text = defaults.value(forKey: "quest") as? String
-        // self.questionLabel.text = "astsd sdf sf sdf slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl "
+
         
         let heightofLabel = HeightUtility.heightForView(text: self.questionLabel.text!, width: self.questionLabel.frame.width)
         singleQuestionViewHeightConstraint.constant = heightofLabel + 290
         
         
         let questionDictionary = defaults.value(forKey: "options") as! [String:String]
-        //let questionDictionary = ["1":"something", "2": "sone" , "3": "sometihf" , "4":"sfsfsff"]
+
 
         choiceA.setTitle(questionDictionary["1"], for: .normal)
         choiceB.setTitle(questionDictionary["2"], for: .normal)

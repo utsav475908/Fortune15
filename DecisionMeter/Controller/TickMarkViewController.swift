@@ -22,9 +22,7 @@ class TickMarkViewController: QuestionViewController {
     }
     
     @objc func dataDownloaded(notifications:NSNotification) {
-        //       let lvc = LoginViewController()
-        //        lvc.dataDownloaded(notification: notifications)
-        //        present(lvc, animated: true, completion: nil)
+
         
     }
     
@@ -43,16 +41,13 @@ class TickMarkViewController: QuestionViewController {
         let defaults = UserDefaults.standard
         let token = defaults.value(forKey: "session") as? String
         print(token!)
-        // Do any additional setup after loading the view.
-        //        if field.text != "200" {
-        //        Http.httpRequest(session: token!, viewController: self)
-        //        }
+
     }
     
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        //isTimerRunning = true
+
         
     }
     

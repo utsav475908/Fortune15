@@ -12,12 +12,7 @@ let dataGotNotificationName = Notification.Name("DataReceived")
 
 struct Http{
     
-    //static let UUID = UIDevice.current.identifierForVendor!.uuidString
-    //static let UUID = UIDevice.current.uniqueDeviceIdentifier()! + String(describing: UIDevice.current.identifierForVendor)
-    // Get Method
-//    static let UUID = UIDevice.current.uniqueDeviceIdentifier()!
-    // Go to the Enviroments.swift
-    
+// UUID is coming from the Environment.swift class
     
     static func questionIdReset() {
         let defaults = UserDefaults.standard
@@ -36,7 +31,7 @@ struct Http{
             
             urlHolder = URL(string: SegueConstants.baseURL + SegueConstants.appURL + "\(sessionString)/questions/\(questionId)")!
         }else {
-            //urlHolder = URL(string: DecisionConstants.baseURL + DecisionConstants.appURL + "\(sessionString)/current-question")!
+
             questionIdReset()
             let defaults = UserDefaults.standard
             let questionID = String(describing: defaults.value(forKey: "questionId")!)

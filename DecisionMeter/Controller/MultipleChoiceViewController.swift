@@ -26,19 +26,19 @@ class MultipleChoiceViewController: QuestionViewController {
         super.viewDidLoad()
 
         let defaults = UserDefaults.standard
-        //self.questionLabel.text = "questiona are ae lsdjfsjlkfjl kjlfsdlfj lsjflsj questiona are ae lsdjfsjlkfjl kjlfsdlfj lsjflsj questiona are ae lsdjfsjlkfjl kjlfsdlfj lsjflsj questiona are  "
+
         self.questionLabel.text = defaults.value(forKey: "quest") as? String
         let heightofLabel = HeightUtility.heightForView(text: self.questionLabel.text!, width: self.questionLabel.frame.width)
         multipleQuestionViewHeightConstraint.constant = heightofLabel + 300
         
         self.submitButton.alpha = 0
         giveTheNameToRespectiveLabels()
-        //showSubmitButton()
+   
     }
     
     func giveTheNameToRespectiveLabels() {
         let defaults = UserDefaults.standard
-       // let sayTitleLabel = ["1":"something", "2": "sone" , "3": "sometihf" , "4":"sfsfsff"]
+  
         let sayTitleLabel = defaults.value(forKey: "options") as! Dictionary<String,String>
         for (key, value) in sayTitleLabel.enumerated(){
             print("Item \(key): \(value)")
@@ -110,24 +110,20 @@ class MultipleChoiceViewController: QuestionViewController {
         var list = [String:String]()
         
         if (choiceA.isSelected) {
-            //list.append((choiceA.titleLabel?.text)!)
-//            list.append ("1")
+
             list["1"] = (choiceA.titleLabel?.text)!
         }
         if (choiceB.isSelected) {
-            //list.append((choiceB.titleLabel?.text)!)
-//            list.append ("2")
+
             list["2"] = (choiceB.titleLabel?.text)!
         }
         if (choiceC.isSelected) {
-            //list.append((choiceC.titleLabel?.text)!)
-//            list.append ("3")
+
             list["3"] = (choiceC.titleLabel?.text)!
 
         }
         if (choiceD.isSelected) {
-            //list.append((choiceD.titleLabel?.text)!)
-//            list.append ("4")
+
             list["4"] = (choiceD.titleLabel?.text)!
 
         }

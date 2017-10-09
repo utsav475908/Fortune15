@@ -11,44 +11,27 @@ import Foundation
 extension Http {
     
     // Post Method
-    
-    
-    
+
     static func submitAction() {
-        
-        //declare parameter as a dictionary which contains string as key and value combination. considering inputs are valid
-        
-        //   let parameters = ["type": "OptionBasedAnswer", "questionId": "1", "userId" : "1"] as Dictionary<String, String>
-        
-        //let parameters = OptionBasedModel()
-        
+
         //create the url with URL
         let defauts = UserDefaults.standard
         let questionNumber = defauts.value(forKey: "questionId") as! String
         let sessionId = defauts.value(forKey: "session") as! String
         // appURL = decision-meter/sessions   and baseURL = localhost://8891
         let url = URL(string: SegueConstants.baseURL + SegueConstants.appURL + "\(sessionId)/questions/\(questionNumber)/answer")!
-        //let url = URL(string: "localhost:8891/decision-meter/sessions/0001/questions")!//change the url
-        //localhost:8891/decision-meter/sessions/0001/questions
-        //create the sessi`on object
+
         let session = URLSession.shared
-        
-        //now create the URLRequest object using the url object
+
         var request = URLRequest(url: url)
-        request.httpMethod = "POST" //set http method as POST
-        
-        
-        //let postDict  = passtheJSONDictionary()
-        
-        
+        request.httpMethod = "POST"
+
         do {
             
             request.httpBody = try JSONSerialization.data(withJSONObject:passtheJSONDictionary(), options: .prettyPrinted)
             request.setValue("#c$m#876ty12itu3428$z$", forHTTPHeaderField: "x-adm-client")
             request.addValue(UUID!, forHTTPHeaderField: "x-request-id")
-            //request.httpBody =
-            // pass dictionary to nsdata object and set it as request body
-            
+
         } catch let error {
             print(error.localizedDescription)
         }
@@ -64,9 +47,7 @@ extension Http {
             }
             
             guard let data = data else {
-                // do the increment counter
-                
-                return
+                 return
             }
             
             do {

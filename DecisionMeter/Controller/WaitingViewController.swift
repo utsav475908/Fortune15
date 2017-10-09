@@ -106,8 +106,13 @@
 
             if  arrayElementsGot["status"]?.int64Value == 404 {
                 print("Raise error")
+                #if Debug || Testing || Staging
+                  addGestureRecognizerForThis()
+                    #endif
+                
                 return
-                //addGestureRecognizerForThis()
+                
+                
 
             }
 
@@ -120,13 +125,9 @@
             }
             
            TokenManager.sharedInstance().saveTheQuestionsAndOptions(arrayElementsGot: arrayElementsGot)
-            
-            // nav key
-            //navigationKey = arrayElementsGot["questionType"] as? String
             DispatchQueue.main.async {
                 self.router?.invokeTheSegueAfterTheWebService(navigationKey: TokenManager.sharedInstance().getTheNavigationKey(), givenViewController: self)
             }
-            
             
         }
   

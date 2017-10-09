@@ -20,17 +20,13 @@ class RangeViewController: QuestionViewController {
         sliderValuePointer.alpha = 0
         let defaults = UserDefaults.standard
         self.questionLabel.text = defaults.value(forKey: "quest") as? String
-        //self.questionLabel.text = "woeioeeor sldf sdf sdf sfd s slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl slkflksjf fjslfjld sfldklj d klsdk sdlj  ldskl "
-        // debugging
-        //self.questionLabel.text = "lore ipsuem loe lore lore ipsuem loe lore lore ipsuem loe lore lore ipsuem loe lore  "
-        // debugging
+
         let height = HeightUtility.heightForView(text: self.questionLabel.text!, width: self.questionLabel.frame.size.width)
         print(height)
         
         rangeQuestionViewHeightConstraint.constant = height + 250
         self.submitButton.alpha = 0
-              //self.submitButton.alpha = 0
-        // Do any additional setup after loading the view.
+
     }
 
     
@@ -57,7 +53,7 @@ class RangeViewController: QuestionViewController {
         var currentStringValue:String = "1"
         let tracRect:CGRect = scaleShow.trackRect(forBounds: scaleShow.bounds)
         let thumbRect:CGRect = scaleShow.thumbRect(forBounds: scaleShow.bounds, trackRect: tracRect, value: scaleShow.value)
-//        sliderValuePointer.center = CGPoint(thumbRect.origin.x + scaleShow.frame.origin.x,  scaleShow.frame.origin.y - 20)
+
         sliderValuePointer.center = CGPoint(x: thumbRect.origin.x + scaleShow.frame.origin.x, y: scaleShow.frame.origin.y - 20)
         
         DispatchQueue.global(qos: .background).async {
@@ -67,7 +63,7 @@ class RangeViewController: QuestionViewController {
             print("This is run on the background queue")
             
             DispatchQueue.main.async {
-                self.revereSliderValue = Int((floor(sender.maximumValue) + 1) - floor(sender.value))
+                self.revereSliderValue = Int(floor((floor(sender.maximumValue ) + 1) - floor(sender.value + 0.5)))
                 currentStringValue = String(self.revereSliderValue)
                 print("This is run on the main queue, after the previous code in outer block")
                 sender.setValue(Float(lround(Double(self.scaleShow.value))), animated: true)
@@ -76,7 +72,7 @@ class RangeViewController: QuestionViewController {
             }
         }
         
-        //showSubmitButton()
+
         
     }
     
